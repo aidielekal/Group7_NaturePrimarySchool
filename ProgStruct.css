@@ -1,0 +1,58 @@
+html {
+  background-image: url('images/background.jpeg');
+  background-repeat:no-repeat;
+       background-size:cover;
+}
+body{
+	text-align:center;
+}
+
+
+h1{
+  background: rgba(71, 104, 85, 0.8);
+	text-shadow: 1px 1px 10px #A3B3AA;
+  font-size: 3em;
+  font-family: optima;
+  color: white;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  margin-top: 10px;
+
+}
+
+/*h2{
+	font-family: Georgia, serif;
+	color : #1A432B;
+	letter-spacing: 3px;
+}*/
+table{
+	border: 1px solid black;
+	float: center;
+	border-collapse: collapse;
+}
+table.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+th, td{
+	border: 1px solid black;
+	padding: 20px;
+
+}
+
+tr:nth-child(even){background-color: #F6DDCC;
+
+}
+
+tr:nth-child(odd){background-color: #A9DFBF;
+
+}
+
+
+@media only screen and (max-width: 992px)
+{
+	h1{
+		font-size: 2em;
+	}
+}

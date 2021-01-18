@@ -1,0 +1,58 @@
+html {
+  background-image: url('images/background.jpeg');
+  background-repeat:no-repeat;
+       background-size:cover;
+}
+
+h1{
+  background: rgba(71, 104, 85, 0.8);
+	text-shadow: 1px 1px 10px #A3B3AA;
+  font-size: 3em;
+  font-family: optima;
+  color: white;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  margin-top: 10px;
+
+}
+
+
+/*h2{
+	font-family: Georgia, serif;
+	position:relative;
+	color : #1A432B;
+	#8FBC8F;
+	text-align: center;
+	letter-spacing: 3px;
+}*/
+
+.center{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+}
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(68, 203, 43, 0.8);
+}
+
+
+p{
+	font-family: Georgia, serif;
+	font-size: 15px;
+	padding-left:60px;
+	padding-top:20px;
+	letter-spacing: 0.3px;
+	word-spacing:0.5px;
+
+}
+
+
+@media only screen and (max-width: 992px)
+{
+	h1{
+		font-size: 2em;
+	}
+}

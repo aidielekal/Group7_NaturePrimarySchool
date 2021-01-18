@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'quantum_of_mechanicregular';
+    src: url('fonts/quantum_of_mechanic-webfont.woff2') format('woff2'),
+         url('fonts/quantum_of_mechanic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	margin:0;
+	padding:0;
+	outline:0;
+}
+img.banner, div.banner, header {
+	width:100%;
+	display:block;
+  top: 0;
+  position:static;
+}
+
+.wrapper {
+  width:100%;
+
+}
+
+.menu {
+  width:100%;
+  background-color:#1A432B;
+  border-top: 2pt solid white;
+  float:left;
+}
+
+ul.nav {
+ list-style:none;
+ overflow:hidden;
+
+ padding-left: 6%;
+ align: center;
+}
+ul.nav li {
+ float:left;
+ }
+
+ul.nav a {
+ display:block;     /*use block if notdy ikut size perkataaan*/
+
+ padding:10px 30px;
+ font-size:1em;
+ color:white;
+ text-decoration:none;
+}
+
+ul.nav a:hover {
+ background-color:#90EE90;
+
+ padding:10px 30px;
+ }
+
+ul.drop {
+ list-style:none;
+ position:absolute;
+ background-color:	#008080;
+ display:none;
+ z-index:500;
+
+}
+
+ul.drop li {
+ float:none;
+ }
+
+ul.nav li:hover ul.drop {
+ display:block;
+ }
+
+ p.footer,footer {
+ 	text-align:center;
+ 	font-weight:bold;
+ 	background-color:#1A432B;
+ 	color:#FFFFFF;
+  padding:5px 0px 5px 0px;
+  margin-top: 10px;
+  line-height: 1.5;
+  bottom: 0px;
+  position: relative;
+  max-width: 100%;
+
+ }
+
+ a.footer{
+   color: #F5FFFA;
+   text-decoration: none;
+ }
+
+ .topButton{
+   height: 50px;
+   width: 50px;
+   float:right;
+   padding-right: 3%;
+
+ }
+
+
+ /* Small devices (portrait tablets and large phones, 600px and down) */
+ @media only screen and (max-width: 600px) {
+
+ 	ul.nav a{
+ 		min-width:600px;
+ 		float: none;
+ 		text-align: left;
+ 		width: 100%;
+ 		display: block;
+
+ 	}
+ }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+
+  	ul.nav a{
+  		max-width:600px;
+  	}
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  	ul.nav a{
+  		max-width:768px;
+  	}
+  }
+  /*Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px)
+  {
+  	ul.nav a{
+  		max-width:992px;
+  	}
+
+  }
+  /*Extra large devices (large laptops and desktops,1200px and up) */
+  @media only screen and (min-width: 1200px)
+  {
+  	ul.nav a{
+  		max-width: 1200px;
+  	}
+
+  }
