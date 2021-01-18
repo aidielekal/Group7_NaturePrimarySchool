@@ -1,0 +1,103 @@
+html {
+	background-image: url('images/background.jpeg');
+	background-repeat:no-repeat;
+	background-size:cover;
+
+
+}
+
+h1{
+	background: rgba(71, 104, 85, 0.8);
+	text-shadow: 1px 1px 10px #A3B3AA;
+  font-size: 3em;
+	font-family: optima;
+  color: white;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  margin-top: 10px;
+
+}
+
+
+h3{
+	background-color: #30a150;
+	font-size: 10pt;
+	color: white;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	margin-top: 10px;
+	margin-right:520px;
+	margin-left:520px;
+}
+div{
+
+	margin: 0px auto;
+}
+a{
+	font-size: 10pt;
+	color: white;
+}
+img.mySlides{width:1272;
+	height:80;
+	padding-right:1;
+	/*style ="width:109%;height:80;padding-right:20"
+	rgba(235, 237, 239, 0.4);
+	rgba(246, 221, 204, 0.6*/
+	}
+
+label{
+	background: rgba(246, 221, 204, 0.8);
+	box-shadow: inset url(background.jpeg) no-repeat fixed 200% 0px;
+	box-shadow: inset url(background.jpeg) no-repeat fixed 200% 0px;
+	align-content: center;
+	padding:5px;
+
+
+}
+
+title{
+	padding:10px;
+}
+
+
+/*h2{font-family: Georgia, serif;
+	position:relative;
+	color : #1A432B;
+	text-align: center;
+	letter-spacing: 3px;}
+
+/*h2:after {
+	content: "Application Process";
+	position: relative; left: 478px; top:108px;
+	color: ;
+}*/
+
+p{
+	font-family: Georgia, serif;
+	font-size: 14px;
+	padding-left:60px;
+	padding-top:20px;
+	letter-spacing: 0.3px;
+
+}
+
+label{
+	font-family: Georgia, serif;
+	font-size: 18px;
+	color : #1A432B;
+	padding-left: 60px;
+}
+
+h4{
+	font-family: Georgia, serif;
+	color : #1A432B;
+	padding-left: 60px;
+}
+
+
+@media only screen and (max-width: 992px)
+{
+	h1{
+		font-size: 2em;
+	}
+}
