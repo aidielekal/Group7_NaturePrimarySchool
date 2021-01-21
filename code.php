@@ -7,23 +7,23 @@
 	{
 		$UName = $_POST['username'];
 		$Pass = $_POST['password'];
-		$query = "SELECT * FROM register WHERE Username='$UName' AND Password = '$Pass'";
+		$query = "SELECT * FROM user WHERE Username='$UName' AND Password = '$Pass'";
 		$result = mysqli_query($con,$query);
 
 		if(mysqli_num_rows($result) > 0)
 		{
 			while($row = mysqli_fetch_assoc($result))
 			{
-				if($row["Status"] == "teacher")
+				if($row["userType"] == "teacher")
 				{
 					//$_SESSION['LoginUser'] = $row["username"];
-					$_SESSION['Status'] = $row["Status"];
+					$_SESSION['userType'] = $row["userType"];
 					header('Location: homepageTeacher.php'); //admin
 				}
-				else
+				else if($row["userType"] == "student")
 				{
 					//$_SESSION['LoginUser'] = $row["username"];
-					$_SESSION['Status'] = $row["Status"];
+					$_SESSION['userType'] = $row["userType"];
 					header('Location: homepage2.php'); //user
 				}
 			}
