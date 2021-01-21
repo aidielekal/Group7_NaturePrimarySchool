@@ -1,5 +1,5 @@
-<?php
-echo '
+
+
 <!-- =====GUEST==== -->
 
 <html lang="en">
@@ -22,9 +22,7 @@ echo '
      <img class="banner" src="images/Banner2b.png" alt="Nature School Banner">
    </div>
  </header>
- ';
 
- echo '
 <!-- =====navigation===== -->
 
 <div class="wrapper">
@@ -51,13 +49,12 @@ echo '
  </ul>
 	</div>
  </div>
- ';
+
 
 
 
 <!-- =====CONTENT===== -->
 
-echo '
 <img src="images/homepagetop.png" alt="Homepage Picture" >
 
 
@@ -135,7 +132,7 @@ echo '
 </div>
 
 <br>
-';
+
 
 <h1>Inspirational Quotes For You!</h1>
 
@@ -227,4 +224,4 @@ Digital learning space for convenient interactive learning
 </body>
 </html>
 
-?>
+
