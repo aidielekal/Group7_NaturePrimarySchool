@@ -83,7 +83,7 @@ else
 			</thead>
 	<?php while($row=$result->fetch_assoc()): ?>
 				<tr>
-					<td><?php echo$row['news_title']; ?></td>
+					<td><?php echo$row['news_title'];  ?></td>
 					<td><?php echo$row['news_description']; ?></td>
 					<td><?php echo$row['news_date']; ?></td>
 					<td>
