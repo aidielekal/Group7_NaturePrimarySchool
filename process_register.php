@@ -24,9 +24,10 @@
 		}
 		else
 		{
+			$hashedpw = password_hash($password, PASSWORD_DEFAULT);
 
-			$sql = "insert into register(Name, DOB, Username, Password, Address, City, Zipcode,
-			State, ContactNumber, Status) values('$name', '$date', '$username', '$password',
+			$sql = "INSERT INTO user (Name, DOB, Username, Password, Address, City, Zipcode,
+			State, ContactNumber, userType) VALUES ('$name', '$date', '$username', '$hashedpw',
 			'$address', '$city', '$zipcode', '$state', '$contactNum', '$status')";
 			$result = mysqli_query($con,$sql);
 
@@ -36,7 +37,8 @@
 			}
 			else
 			{
-				echo 'Please Check Your Query';
+				echo 'pw: '.$password.'\nhashed: '.$hashedpw;
+				echo '\nPlease Check Your Query';
 			}
 		}
 
