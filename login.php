@@ -8,6 +8,7 @@ include "code.php";
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 	<title>Nature Primary School</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="login.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="HeaderFooter.css">
@@ -42,6 +43,24 @@ include "code.php";
 
 </div>
 </form>
+	 
+<?php
+  $fullUrl =  "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+  if(strpos($fullUrl,"signup=notvalid") == true){
+    $error = "Your Password is not Valid";
+    echo "<div class='alert alert-danger mx-auto m-3'>".$error."</div>" ;
+    exit();
+  }elseif (strpos($fullUrl,"signup=notexist") == true){
+    $error = "No account with that username";
+    echo "<div class='alert alert-danger mx-auto m-3'>".$error."</div>" ;
+    exit();
+  }elseif(strpos($fullUrl,"signup=somethingwentwrong") == true){
+    $error = "Oops! Something went wrong. Please try again later.";
+    echo "<div class='alert alert-danger mx-auto m-3'>".$error."</div>" ;
+    exit();
+  }
+?>
 	<script>
 		function myFunction(){
 			var x = document.getElementById("pass");

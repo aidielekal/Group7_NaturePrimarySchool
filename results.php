@@ -23,6 +23,7 @@ else
 	<link rel="stylesheet" href="HeaderFooter.css">
    <meta charset="utf-8">
    <title>Nature Primary School</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
    <style>
 		input{
 			width:40%;
@@ -148,7 +149,13 @@ else
 				<th align = "center"><?php echo $row['GPA'];?></th>
 			</tr>
 			<?php
+			exit();
 		}
+		if (mysqli_fetch_array($result) == null) {
+			$error = "Examination Result for corresponding Student ID does not exist";
+			echo "<div class='alert alert-danger mx-auto m-3'>".$error."</div>" ;
+			exit();
+    		}
 	}
 
 	?>
