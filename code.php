@@ -84,18 +84,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         } 
 						else{
                             // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
-							echo $password_err;
-							echo $password;
-							echo $hashed_password;
+                            header("Location: login.php?signup=notvalid");
+              			exit();
                         }
                     }
                 } else{
                     // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
+                    header("Location: login.php?signup=notexist");
+                    exit();
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                header("Location: login.php?signup=somethingwentwrong");
+                exit();
             }
 
             // Close statement
@@ -107,84 +107,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($con);
 }
 
-
-
-/*
-	//session_start();
-	require_once('connection.php');
-	$message = "";
-	$Status = "";
-
-	if(isset($_POST['button']))
-	{
-		$UName = $_POST['username'];
-		$Pass = $_POST['password'];
-		
-		$query = "SELECT * FROM user WHERE Username='$UName' AND Password = '$Pass'";
-		$result = mysqli_query($con,$query);
-		$temp = mysqli_fetch_assoc($result);
-		$hashed_password = $temp["Password"];
-		
-		if(password_verify($Pass, $hashed_password)){
-            // Password is correct, so start a new session
-            session_start();
-                            
-            while($row = mysqli_fetch_assoc($result))
-			{
-				if($row["userType"] == "teacher")
-				{
-					//$_SESSION['LoginUser'] = $row["username"];
-					$_SESSION['Status'] = $row["userType"];
-					header('Location: homepageTeacher.php'); //admin
-				}
-				else if($row["userType"] == "student")
-				{
-					//$_SESSION['LoginUser'] = $row["username"];
-					$_SESSION['Status'] = $row["userType"];
-					header('Location: homepage2.php'); //user
-				}
-				else
-				{
-					header('Location: index.php'); //admin?
-				}
-			}
-		}
-		else 
-		{
-			echo "Wrong pw";
-		}
-		/*
-		if(mysqli_num_rows($result) > 0)
-		{
-			while($row = mysqli_fetch_assoc($result))
-			{
-				if($row["userType"] == "teacher")
-				{
-					//$_SESSION['LoginUser'] = $row["username"];
-					$_SESSION['Status'] = $row["userType"];
-					header('Location: homepageTeacher.php'); //admin
-				}
-				else if($row["userType"] == "student")
-				{
-					//$_SESSION['LoginUser'] = $row["username"];
-					$_SESSION['Status'] = $row["userType"];
-					header('Location: homepage2.php'); //user
-				}
-				else
-				{
-					header('Location: index.php'); //admin?
-				}
-			}
-		}
-		else
-		{
-			echo "<script>alert('Invalid Username or Password!')</script>";
-			echo "<script>location.href='login.php'</script>";
-			//header('Location: login.php');
-
-		}
-		
-	}
-
-*/
 ?>
