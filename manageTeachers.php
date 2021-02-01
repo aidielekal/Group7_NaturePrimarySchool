@@ -24,8 +24,6 @@
    </div>
  </header>
 
-
-
 <!-- =====navigation===== -->
 
 <div class="wrapper">
@@ -55,138 +53,40 @@
 	<table width="70%" border="1" style="border-collapse:collapse;">
 		<thead>
 		<tr>
-		<th><strong>No.</strong></th>
+		<th><strong>User ID</strong></th>
 		<th><strong>Teacher Name</strong></th>
 		<th><strong>Email</strong></th>
-		<th><strong>Edit</strong></th>
-		<th><strong>Delete</strong></th>
 		</tr>
 		</thead>
 		<tbody>
 			<?php
-			$count=1;
-			$sel_query="Select * from user where userType = 'teacher';";
+			require_once 'connection.php';
+		
+			$sel_query="SELECT * FROM user WHERE userType = 'teacher';";
 			$result = mysqli_query($con,$sel_query);
-			while($row = mysqli_fetch_assoc($result)) { ?>
-			<tr><td align="center"><?php echo $count; ?></td>
-				<td align="center"><?php echo $row["Name"]; ?></td>
-				<td align="center"><?php echo $row["Username"]; ?></td>
-				<td align="center">
-					<a href="edit.php?id=<?php echo $row["Name"]; ?>">Edit</a>
+			
+			while($row = mysqli_fetch_array($result)) { ?>
+			<tr><?php echo "<form action=editTeachers.php method=post>";?>
+				<td align="center"><?php echo "<input type= text name=usID value='".$row['userID']."'>";?></td>
+				<td align="center"><?php echo "<input type= text name=usName value=".$row['Name'].">";?></td>
+				<td align="center"><?php echo "<input type= text name=usUsrName value=".$row['Username'].">";?></td>
+				<td align="center"><?php echo "<td><input type= submit name=update value=update" .">";?></td>
+				<!--<td align="center">--><?php //echo "<a href=editTeachers.php?usID=".$row['userID'].">Update</a>";?></td>
+				<td align="center"><?php echo "<a href=deleteTeachers.php?usID=".$row['userID'].">Delete</a>";?></td>
+				<?php echo "</form>";?>
+				<!--<td align="center">
+					<a href="editTeachers.php?id=<?php echo $row["Username"]; ?>">Update</a>
 				</td>
 				<td align="center">
-					<a href="delete.php?id=<?php echo $row["Username"]; ?>">Delete</a>
-				</td>
+					<a href="deleteTeachers.php?id=<?php echo $row["Username"]; ?>">Delete</a>
+				</td>-->
 			</tr>
-			<?php $count++; } ?>
+			<?php }?>
 		</tbody>
 	</table>
 
 </div>
 
-<!--<form action="process3.php" method="POST">
-		<input type="hidden" name="id" value="<?php echo $id; ?>">
-		<div class="row justify-content-center">
-		<div class="form-group">
-			<!--<label>Title</label><br>
-			<input type="text" name="title" class="form-control" value="<?php echo $title; ?>" placeholder="Enter event title">
-		</div>
-		<div class="form-group">
-			<!--<label>Description</label><br>
-			<input type="text" name="description" class="form-control" value="<?php echo $description; ?>" placeholder="Enter event description">
-		</div>
-		<div class="form-group">
-			<!--<label>Date</label><br>
-			<input type="date" name="date" class="form-control" value="<?php echo $date; ?>" placeholder="Enter event date">
-		</div>
-		<div class="form-group">
-		<?php if($update == true): ?>
-			<button type="submit" class="btn-info2" name="update">Update</button>
-		<?php else: ?>
-			<button type="submit" class="btn-primary" name="save">Save</button>
-		<?php endif; ?>
-		</div>
-	</form>-->
-<!--<div id="userModal" class="modal fade">
-	<div class="modal-dialog">
-		<form method="post" id="userForm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">×</button>
-					<h4 class="modal-title"><i class="fa fa-plus"></i> Edit User</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="firstname" class="control-label">First Name*</label>
-						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" required>							
-					</div>
-					<div class="form-group">
-						<label for="lastname" class="control-label">Last Name</label>							
-						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">							
-					</div>	   	
-					<div class="form-group">
-						<label for="lastname" class="control-label">Email*</label>							
-						<input type="text" class="form-control"  id="email" name="email" placeholder="Email" required>							
-					</div>	 
-					<div class="form-group" id="passwordSection">
-						<label for="lastname" class="control-label">Password*</label>							
-						<input type="password" class="form-control"  id="password" name="password" placeholder="Password" required>							
-					</div>
-					<div class="form-group">
-						<label for="gender" class="control-label">Gender</label>							
-						<label class="radio-inline">
-							<input type="radio" name="gender" id="male" value="male" required>Male
-						</label>;
-						<label class="radio-inline">
-							<input type="radio" name="gender" id="female" value="female" required>Female
-						</label>							
-					</div>	
-					<div class="form-group">
-						<label for="lastname" class="control-label">Mobile</label>							
-						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile">							
-					</div>	 
-					<div class="form-group">
-						<label for="lastname" class="control-label">Designation</label>							
-						<input type="text" class="form-control" id="designation" name="designation" placeholder="designation">							
-					</div>	
-					<div class="form-group">
-						<label for="gender" class="control-label">Status</label>							
-						<label class="radio-inline">
-							<input type="radio" name="status" id="active" value="active" required>Active
-						</label>;
-						<label class="radio-inline">
-							<input type="radio" name="status" id="pending" value="pending" required>Pending
-						</label>							
-					</div>
-					<div class="form-group">
-						<label for="user_type" class="control-label">User Type</label>							
-						<label class="radio-inline">
-							<input type="radio" name="user_type" id="general" value="general" required>General
-						</label>;
-						<label class="radio-inline">
-							<input type="radio" name="user_type" id="administrator" value="administrator" required>Administrator
-						</label>							
-					</div>	
-				</div>
-				<div class="modal-footer">
-					<input type="hidden" name="userid" id="userid" />
-					<input type="hidden" name="action" id="action" value="updateUser" />
-					<input type="submit" name="save" id="save" class="btn btn-info" value="Save" />
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
-body{
-	margin: 0;
-	padding: 0;
-	font-family: optima sans-serif;
-	color:#384047;
-	background: url("images/background.jpeg"),no-repeat;
-	background-size: cover;
-	max-width: 100%;
-    overflow-x: hidden;
-}-->
+
 </body>
 </html>
