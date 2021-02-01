@@ -1,8 +1,8 @@
 <?php
-	$connection = mysqli_connect('localhost', 'root', '', 'Group6');
-	mysqli_select_db($connection, 'Group6');
 
-		$query = "UPDATE studentmarks SET Student_ID='$_POST[studID]',
+		require_once 'connection.php';
+
+		$sel_query = "UPDATE studentmarks SET studentID='$_POST[studID]',
 										Student_Name ='$_POST[studName]',
 										English_Studies ='$_POST[english]',
 										Mathematics = '$_POST[maths]',
@@ -14,9 +14,10 @@
 										Geography = '$_POST[geo]',
 										Islamic_Studies = '$_POST[islamic]',
 										Visual_Arts = '$_POST[visualArts]',
-										GPA = '$_POST[gpa]' WHERE Student_ID='$_POST[studID]'";
+										GPA = '$_POST[gpa]' WHERE studentID='$_POST[studID]'";
 		 //Execute Query
-		 if(mysqli_query($connection,$query))
+		 $result = mysqli_query($con,$sel_query);
+		 if($result)
 			 header("refresh:1; url=editMarks.php");
 		 else
 			 echo "Not Updated";
