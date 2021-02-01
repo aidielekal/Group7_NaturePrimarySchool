@@ -1,12 +1,9 @@
 <?php
-	$connection = mysqli_connect('localhost','root', '','Group6');
+	require_once 'connection.php';
+	$sel_query = "DELETE FROM studentmarks WHERE studentID='$_GET[studID]'";
+	$result = mysqli_query($con,$sel_query);
 
-	mysqli_select_db($connection, 'Group6');
-
-	$query = "DELETE FROM studentmarks WHERE Student_ID='$_GET[studID]'";
-
-
-	if(mysqli_query($connection,$query)){
+	if(mysqli_query($con,$sel_query)){
 		echo '<script type="text/javascript">';
 		echo ' alert("Student Results has been deleted!\nPlease wait until you are redirected to result page")';
 		echo '</script>';

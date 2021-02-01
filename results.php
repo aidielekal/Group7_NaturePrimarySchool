@@ -74,20 +74,19 @@ else
 	<center>
 		<h1> Student Result </h1><br/>
 		<form action="" method= "POST">
-		<input type="text" name = "Student_ID" placeholder = "Enter ID To Search"/> <br/>
+		<input type="text" name = "studentID" placeholder = "Enter ID To Search"/> <br/>
 		<input type="submit" name = "submit" value= "Results" style="background-color:white;"></p>
 		</form>
 
 	<?php
-	$connection = mysqli_connect("localhost", "root", "");
-	$db = mysqli_select_db($connection, 'Group6');
+	require_once 'connection.php';
 
-	if(isset($_POST['Student_ID']))
+	if(isset($_POST['studentID']))
 	{
-		$Student_ID = $_POST['Student_ID'];
+		$studentID = $_POST['studentID'];
 
-		$query = "SELECT * FROM studentmarks where Student_ID = '$Student_ID' ";
-		$result = mysqli_query($connection,$query);
+		$sel_query = "SELECT * FROM studentmarks where studentID = '$studentID'";
+		$result = mysqli_query($con,$sel_query);
 
 		while($row = mysqli_fetch_array($result))
 		{
@@ -98,7 +97,7 @@ else
 			</tr>
 			<tr style = "background-color: #A9DFBF;">
 				<th> Student ID </th>
-				<td align = "center"><?php echo $row['Student_ID'];?></td>
+				<td align = "center"><?php echo $row['studentID'];?></td>
 			</tr>
 			<tr style = "background-color: #F6DDCC;">
 				<th> Student Name </th>
