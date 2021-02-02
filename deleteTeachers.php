@@ -1,10 +1,10 @@
- 
  <?php
 			require_once 'connection.php';
-			$sel_query = "DELETE FROM user WHERE userID= '$_GET[usID]'";
-			$result = mysqli_query($con,$sel_query);
+			$query = "DELETE FROM user WHERE userID='$_GET[usID]'";
 			
-			if(mysqli_query($con,$sel_query)){
+			//Execute Query
+			$result = mysqli_query($con,$query);
+			if($result){
 				echo '<script type="text/javascript">';
 				echo ' alert("User has been deleted!\nPlease wait until you are redirected back")';
 				echo '</script>';
@@ -12,6 +12,4 @@
 			}
 			else{
 				echo"User Not Deleted";}
-				
-				
 ?>
