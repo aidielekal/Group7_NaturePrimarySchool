@@ -26,6 +26,20 @@ else
 <body>
 <?php require_once 'process.php';?>
 
+<script type = "text/javascript">
+	function submitSuccess(){
+		alert("Save Successful!");
+	}
+	
+	function updateSuccess(){
+		alert("Update Successful!");
+	}
+	
+	function deleteSuccess(){
+		alert("Delete Successful!");
+	}
+</script>
+
 <header>
 	<div class="banner">
 		<img class="banner" src="images/Banner2b.png" alt="Banner image">
@@ -67,8 +81,13 @@ else
 	<?php endif ?>
 
 	<?php
-		$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
-		$result = $mysqli->query("SELECT * FROM event") or die($mysqli->error);
+		require_once('connection.php');
+
+		$query = "SELECT * FROM event";
+		$result = mysqli_query($con,$query);
+		
+		//$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
+		//$result = $mysqli->query("SELECT * FROM event") or die($mysqli->error);
 		//pre_r($result);
 	?>
 	<div class="row justify-content-center">
@@ -90,7 +109,7 @@ else
 					<td><?php echo$row['event_date']; ?></td>
 					<td>
 						<a href="eventsContentTeacher.php?edit=<?php echo $row['event_id']; ?>" class="btn-info">Edit</a>
-						<a href="eventsContentTeacher.php?delete=<?php echo $row['event_id']; ?>" class="btn-danger">Delete</a>
+						<a href="eventsContentTeacher.php?delete=<?php echo $row['event_id']; ?>" onClick="deleteSuccess()" class="btn-danger">Delete</a>
 					</td>
 				</tr>
 	<?php endwhile; ?>
@@ -130,9 +149,9 @@ else
 		</div>
 		<div class="form-group">
 		<?php if($update == true): ?>
-			<button type="submit" class="btn-info2" name="update">Update</button>
+			<button type="submit" onClick="updateSuccess()" class="btn-info2" name="update">Update</button>
 		<?php else: ?>
-			<button type="submit" class="btn-primary" name="save">Save</button>
+			<button type="submit" onClick="submitSuccess()" class="btn-primary" name="save">Save</button>
 		<?php endif; ?>
 		</div>
 	</form>
