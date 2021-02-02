@@ -1,6 +1,6 @@
 <?php
 
-	$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
+	require_once ('connection.php');
 
 	$title='';
 	$description='';
@@ -14,30 +14,30 @@
 		$description=$_POST['description'];
 		$date=$_POST['date'];
 
-		$mysqli->query("INSERT INTO news (news_title,news_description,news_date) VALUES('$title','$description','$date')") or die($mysqli->error());
-
+		$con->query("INSERT INTO news (news_title, news_description, news_date) VALUES ('$title','$description','$date')") or die ($con->error());
+		
 		$_SESSION['message'] = "New record has been saved!";
 		$_SESSION['msg_type'] = "success";
-
+		
+		//(alert)
 		header("location: newsContentTeacher.php");
 	}
 
-	if(isset($_GET['delete']))
+	else if(isset($_GET['delete']))
 	{
 		$id=$_GET['delete'];
-		$mysqli->query("DELETE FROM news WHERE news_id=$id") or die($mysqli->error());
-
+		$con-> query("DELETE FROM news WHERE news_id=$id") or die($con->error());
 		$_SESSION['message'] = "Record has been deleted!";
 		$_SESSION['msg_type'] = "danger";
 
 		header("location: newsContentTeacher.php");
 	}
 
-	if(isset($_GET['edit']))
+	else if(isset($_GET['edit']))
 	{
 		$id=$_GET['edit'];
 		$update=true;
-		$result=$mysqli->query("SELECT * FROM news WHERE news_id=$id") or die($mysqli->error());
+		$result=$con->query("SELECT * FROM news WHERE news_id=$id")or die($con->error());
 
 		if($result->num_rows)
 		{
@@ -55,8 +55,8 @@
 		$description=$_POST['description'];
 		$date=$_POST['date'];
 
-		$mysqli->query("UPDATE news SET news_title='$title', news_description='$description', news_date='$date' WHERE news_id=$id") or die($mysqli->error());
-
+		$con->query("UPDATE news SET news_title='$title', news_description='$description', news_date='$date' WHERE news_id=$id") or die($con->error());
+		
 		$_SESSION['message'] = "Record has been updated!";
 		$_SESSION['msg_type'] = "warning";
 

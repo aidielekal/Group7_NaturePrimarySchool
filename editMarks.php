@@ -61,14 +61,10 @@ else
 		<h1> Student Results </h1><br/>
 
 	<?php
-	$connection = mysqli_connect("localhost", "root", "", "Group6");
-	if(!$connection){
-		die("Cannot connect: " . mysqli_error());
-	}
-	mysqli_select_db($connection, 'Group6');
+	require_once "connection.php";
 
 		$query = "SELECT * FROM studentmarks";
-		$result = mysqli_query($connection,$query);
+		$result = mysqli_query($con,$query);
 ?>
 <table>
 		<tr>
@@ -92,7 +88,7 @@ else
 		{
 			echo "<tr><form action=update.php method=post>";
 			echo "<tr>";
-			echo "<td><input type= text name=studID value='" . $row['Student_ID']."'></td>";
+			echo "<td><input type= text name=studID value='" . $row['studentID']."'></td>";
 			echo "<td><input type= text name=studName value=" . $row['Student_Name']."></td>";
 			echo "<td><input type= text name=english value=" . $row['English_Studies']."></td>";
 			echo "<td><input type= text name=maths value=" . $row['Mathematics']."></td>";
@@ -106,8 +102,8 @@ else
 			echo "<td><input type= text name=visualArts value=" . $row['Visual_Arts']."></td>";
 			echo "<td><input type= text name=gpa value=" . $row['GPA']."></td>";
 			echo "<td><input type= submit name=update value=update" ."></td>";
-			echo "<td><a href=delete.php?studID=".$row['Student_ID'].">Delete</a></td>";
-			echo "<td><input type=hidden name=studID value='".$row['Student_ID']."'>";
+			echo "<td><a href=delete.php?studID=".$row['studentID'].">Delete</a></td>";
+			echo "<td><input type=hidden name=studID value='".$row['studentID']."'>";
 			echo "</form></tr>";
 		}
 ?>
