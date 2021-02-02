@@ -23,6 +23,49 @@
      <img class="banner" src="images/Banner2b.png" alt="Nature School Banner">
    </div>
  </header>
+ <style>
+		input[type=text]{
+			width:100%;
+			height:5%;
+			border:1px;
+			border-radius:5px;
+			padding: 8px 15px 8px 15px;
+			margin: 10px 0px 15px 0px;
+			box-shadow: 1px 1px 2px 1px black;
+			}
+		input[type=text1]{
+			text-align:center;
+			width:40%;
+			height:5%;
+			border:none;
+			border-radius:5px;
+			padding: 8px 10px 8px 10px;
+			margin: 10px 0px 15px 0px;
+			
+			background: url("images/background.jpeg"),no-repeat;}
+			
+			input[type=submit]{
+			text-align:center;
+			width:100%;
+			height:5%;
+			border:1px;
+			border-radius:5px;
+			padding: 8px 15px 8px 15px;
+			margin: 10px 0px 10px 0px;
+			box-shadow: 1px 1px 2px 1px green;
+			}
+			
+			input[type=submit1]{
+			text-align:center;
+			width:50%;
+			height:5%;
+			border:1px;
+			border-radius:5px;
+			padding: 8px 0px 8px 0px;
+			margin: 5px 0px 5px 0px;
+			box-shadow: 1px 1px 2px 1px red;
+			}
+   </style>
 
 <!-- =====navigation===== -->
 
@@ -50,7 +93,7 @@
 	<div id="title">
 		<h1>Manage Teachers</h1>
 	</div>
-	<table width="70%" border="1" style="border-collapse:collapse;">
+	<table width="90%" border="1" style="border-collapse:collapse;">
 		<thead>
 		<tr>
 		<th><strong>User ID</strong></th>
@@ -67,19 +110,12 @@
 			
 			while($row = mysqli_fetch_array($result)) { ?>
 			<tr><?php echo "<form action=editTeachers.php method=post>";?>
-				<td align="center"><?php echo "<input type= text name=usID value='".$row['userID']."'>";?></td>
+				<td align="center"><?php echo "<input type= text1 name=usID value='".$row['userID']."'>";?></td>
 				<td align="center"><?php echo "<input type= text name=usName value=".$row['Name'].">";?></td>
 				<td align="center"><?php echo "<input type= text name=usUsrName value=".$row['Username'].">";?></td>
-				<td align="center"><?php echo "<td><input type= submit name=update value=update" .">";?></td>
-				<!--<td align="center">--><?php //echo "<a href=editTeachers.php?usID=".$row['userID'].">Update</a>";?></td>
+				<td align="center"><?php echo "<input type= submit name=update value=update" .">";?></td>
 				<td align="center"><?php echo "<a href=deleteTeachers.php?usID=".$row['userID'].">Delete</a>";?></td>
 				<?php echo "</form>";?>
-				<!--<td align="center">
-					<a href="editTeachers.php?id=<?php echo $row["Username"]; ?>">Update</a>
-				</td>
-				<td align="center">
-					<a href="deleteTeachers.php?id=<?php echo $row["Username"]; ?>">Delete</a>
-				</td>-->
 			</tr>
 			<?php }?>
 		</tbody>
