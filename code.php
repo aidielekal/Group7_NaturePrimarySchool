@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							{
 								//$_SESSION['LoginUser'] = $row["username"];
 								$_SESSION['Status'] = $userType;
-								header('Location: homepageTeacher.php'); //admin
+								header('Location: homepageTeacher.php'); //teacher
 							}
 							else if($userType == "student")
 							{
@@ -70,17 +70,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							}
 							else
 							{
-								header('Location: index.php'); //admin?
+								header('Location: index.php'); 
 							}
-							/*
-							if($id == 0 ){																
-								// Redirect user to welcome page
-								header("location: ../cetak-owner.php");	
-							}
-                            // Redirect user to welcome page
-                            else{
-								header("location: ../cetak-profile.php");
-							}*/
                         } 
 						else{
                             // Display an error message if password is not valid
@@ -90,9 +81,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							echo $hashed_password;
                         }
                     }
-                } else{
-                    // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
+                }
+				else if($username == "admin@gmail.com" && $password == "admin")
+				{
+					$_SESSION["loggedin"] = true;
+					$_SESSION['Status'] = "admin";
+					header('Location: homepageAdmin.php'); //admin
+				}
+				else{
+				// Display an error message if username doesn't exist
+				$username_err = "No account found with that username.";
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
