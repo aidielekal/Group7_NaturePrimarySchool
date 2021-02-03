@@ -84,7 +84,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }
 				else if($username == "admin@gmail.com" && $password == "admin")
 				{
-					$_SESSION["loggedin"] = true;
+					session_start();
+					$_SESSION['loggedin'] = true;
 					$_SESSION['Status'] = "admin";
 					header('Location: homepageAdmin.php'); //admin
 				}
