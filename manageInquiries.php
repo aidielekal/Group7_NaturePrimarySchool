@@ -29,10 +29,7 @@ else
 <link rel="stylesheet" href="manageInquiries.css">
 <link rel="stylesheet" href="css/responsive.css" media="screen and (max-width:1024px)">
 <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-</head>
+    </head>
 <!--<script src="text.js"></script>-->
 
 <!-- =====position fixed===== -->
