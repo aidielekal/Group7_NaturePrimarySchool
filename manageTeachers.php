@@ -1,5 +1,23 @@
 <!-- =====ADMIN==== -->
+<?php
 
+require_once "connection.php";
+
+/*
+session_start();
+if(isset($_SESSION['Status']))
+{
+	if($_SESSION['Status'] != 'admin') //in admin file
+	{
+		header('Location: homepageAdmin.php'); //user
+	}
+}
+else
+{
+	header('Location: login.php');
+}
+*/
+?>
 
 <html lang="en">
 <head>
@@ -33,20 +51,20 @@
 			margin: 10px 0px 15px 0px;
 			box-shadow: 1px 1px 2px 1px black;
 			}
+			
 		input[type=text1]{
+			width:100%;
 			text-align:center;
-			width:40%;
 			height:5%;
 			border:none;
 			border-radius:5px;
-			padding: 8px 10px 8px 10px;
+			padding: 8px 0px 8px 0px;
 			margin: 10px 0px 15px 0px;
-			
-			background: url("images/background.jpeg"),no-repeat;}
+			background: url("images/background.jpeg"),no-repeat;
+			}
 			
 			input[type=submit]{
 			text-align:center;
-			width:100%;
 			height:5%;
 			border:1px;
 			border-radius:5px;
@@ -54,17 +72,7 @@
 			margin: 10px 0px 10px 0px;
 			box-shadow: 1px 1px 2px 1px green;
 			}
-			
-			input[type=submit1]{
-			text-align:center;
-			width:50%;
-			height:5%;
-			border:1px;
-			border-radius:5px;
-			padding: 8px 0px 8px 0px;
-			margin: 5px 0px 5px 0px;
-			box-shadow: 1px 1px 2px 1px red;
-			}
+
    </style>
 
 <!-- =====navigation===== -->
@@ -96,9 +104,9 @@
 	<table width="90%" border="1" style="border-collapse:collapse;">
 		<thead>
 		<tr>
-		<th><strong>User ID</strong></th>
-		<th><strong>Teacher Name</strong></th>
-		<th><strong>Email</strong></th>
+		<th style ="width:10%"><strong>User ID</strong></th>
+		<th style ="width:40%"><strong>Teacher Name</strong></th>
+		<th style ="width:40%"><strong>Email</strong></th>
 		</tr>
 		</thead>
 		<tbody>
