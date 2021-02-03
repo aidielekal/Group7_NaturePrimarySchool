@@ -3,11 +3,11 @@
 
 require_once "connection.php";
 
-/*
+
 session_start();
 if(isset($_SESSION['Status']))
 {
-	if($_SESSION['Status'] != 'admin') //in admin file
+	if($_SESSION['Status'] == 'admin') //in admin file
 	{
 		header('Location: homepageAdmin.php'); //user
 	}
@@ -16,7 +16,7 @@ else
 {
 	header('Location: login.php');
 }
-*/
+
 ?>
 
 <html lang="en">
