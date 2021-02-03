@@ -68,6 +68,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								$_SESSION['Status'] = $userType;
 								header('Location: homepage2.php'); //user
 							}
+							else if($userType == "admin")
+							{
+								//$_SESSION['LoginUser'] = $row["username"];
+								$_SESSION['Status'] = $userType;
+								header('Location: homepageAdmin.php'); //user
+							}
 							else
 							{
 								header('Location: index.php'); //admin?
