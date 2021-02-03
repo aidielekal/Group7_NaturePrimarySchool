@@ -3,6 +3,18 @@
 
 session_start();
 
+if(isset($_SESSION['Status']))
+{
+	if($_SESSION['Status'] != "admin") 
+	{
+		header('Location: homepageAdmin.php'); //user
+	}
+}
+else
+{
+	header('Location: login.php');
+}
+
 ?>
 
 <html lang="en">
