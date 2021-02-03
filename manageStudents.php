@@ -2,22 +2,21 @@
 <?php
 
 require_once "connection.php";
+include "editStudent.php";
 
-/*
 session_start();
 
 if(isset($_SESSION['Status']))
 {
-	if($_SESSION['Status'] != 'admin') //in admin file
+	if($_SESSION['Status'] != 'admin') 
 	{
-		header('Location: homepageAdmin.php'); //user
+		header('Location: manageStudents.php'); //user
 	}
 }
 else
 {
 	header('Location: login.php');
 }
-*/
 ?>
 
 
@@ -31,7 +30,27 @@ else
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link rel="stylesheet" href="home.css">
 <link rel="stylesheet" href="HeaderFooter.css">
+<link rel="stylesheet" href="manageStudents.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/responsive.css" media="screen and (max-width:1024px)">
+<!-- <script>
+	$(document).ready(function(){
+		$('.editbtn').on('click', function(){
+			$('#editmodal').modal('show');
+			
+			$tr = $(this).closest('tr');
+			
+			var data = $tr.chilren("td").map(function(){
+				return $(this).text();
+			}).get();
+			
+			console.log(data);
+			$('update_id').val(data[0]);
+			$('sName').val(data[1]);
+			$('sID').val(data[2]);
+		});
+	});
+</script> -->
 
 <!-- =====position fixed===== -->
 <body>
@@ -40,8 +59,6 @@ else
      <img class="banner" src="images/Banner2b.png" alt="Nature School Banner">
    </div>
  </header>
-
-
 
 <!-- =====navigation===== -->
 
@@ -63,9 +80,10 @@ else
 	</div>
  </div>
 
-<!-- =====CONTENT===== -->
+<!-- =====MAIN CONTENT===== -->
+<h1>Student Details</h1>
+
 <div class="sTable">
-	<h2> Manage Students </h2>
 	<table width="70%" border="1" style="border-collapse:collapse;">
 		<thead>
 		<tr>
@@ -79,24 +97,24 @@ else
 		<tbody>
 			<?php
 			$count=1;
-			$sel_query="Select * from user where userType = 'teacher';";
+			$sel_query="Select * from user where userType = 'student';";
 			$result = mysqli_query($con,$sel_query);
 			while($row = mysqli_fetch_assoc($result)) { ?>
 			<tr><td align="center"><?php echo $count; ?></td>
 				<td align="center"><?php echo $row["Name"]; ?></td>
 				<td align="center"><?php echo $row["userID"]; ?></td>
 				<td align="center">
-					<a href="edit.php?id=<?php echo $row["Name"]; ?>">Edit</a>
+					<a href="editStudent.php?edit=<?php echo $row["userID"]; ?>"><i style="font-size:24px" class="fa">&#xf040;</i></a>
 				</td>
 				<td align="center">
-					<a href="delete.php?id=<?php echo $row["userID"]; ?>">Delete</a>
+					<a href="deleteStudent.php?del=<?php echo $row["userID"]; ?>"><i style="font-size:24px" class="fa">&#xf014;</i></a>
 				</td>
 			</tr>
 			<?php $count++; } ?>
 		</tbody>
 	</table>
-
 </div>
+
 <!-- back to top button -->
 
 <a class="topButton" href="#top"><img class="topButton" src="images/top.png"  alt="Back to Top"></a>
