@@ -2,7 +2,6 @@
 <?php
 
 require_once "connection.php";
-include "editStudent.php";
 
 session_start();
 
@@ -87,7 +86,7 @@ else
 				<td align="center" style="text-transform:uppercase;"><?php echo $row["Name"]; ?></td>
 				<td align="center"><?php echo $row["Username"]; ?></td>
 				<td align="center">
-					<a href="updateStudent.php?edit=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:black" class="fa">&#xf040;</i></a>
+					<a href="editStudent.php?edit=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:black" class="fa">&#xf040;</i></a>
 				</td>
 				<td align="center">
 					<a href="deleteStudent.php?del=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:darkred" class="fa">&#xf014;</i></a>
