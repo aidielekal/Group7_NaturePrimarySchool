@@ -33,24 +33,7 @@ else
 <link rel="stylesheet" href="manageStudents.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/responsive.css" media="screen and (max-width:1024px)">
-<!-- <script>
-	$(document).ready(function(){
-		$('.editbtn').on('click', function(){
-			$('#editmodal').modal('show');
-			
-			$tr = $(this).closest('tr');
-			
-			var data = $tr.chilren("td").map(function(){
-				return $(this).text();
-			}).get();
-			
-			console.log(data);
-			$('update_id').val(data[0]);
-			$('sName').val(data[1]);
-			$('sID').val(data[2]);
-		});
-	});
-</script> -->
+
 
 <!-- =====position fixed===== -->
 <body>
@@ -86,10 +69,9 @@ else
 <div class="sTable">
 	<table width="70%" border="1" style="border-collapse:collapse;">
 		<thead>
-		<tr>
-		<th><strong>No</strong></th>
+		<tr><th><strong>Student ID</strong></th>
 		<th><strong>Student Name</strong></th>
-		<th><strong>Student ID</strong></th>
+		<th><strong>Email Address</strong></th>
 		<th><strong>Edit</strong></th>
 		<th><strong>Delete</strong></th>
 		</tr>
@@ -100,19 +82,21 @@ else
 			$sel_query="Select * from user where userType = 'student';";
 			$result = mysqli_query($con,$sel_query);
 			while($row = mysqli_fetch_assoc($result)) { ?>
-			<tr><td align="center"><?php echo $count; ?></td>
-				<td align="center"><?php echo $row["Name"]; ?></td>
+			<tr>
 				<td align="center"><?php echo $row["userID"]; ?></td>
+				<td align="center" style="text-transform:uppercase;"><?php echo $row["Name"]; ?></td>
+				<td align="center"><?php echo $row["Username"]; ?></td>
 				<td align="center">
-					<a href="editStudent.php?edit=<?php echo $row["userID"]; ?>"><i style="font-size:24px" class="fa">&#xf040;</i></a>
+					<a href="updateStudent.php?edit=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:black" class="fa">&#xf040;</i></a>
 				</td>
 				<td align="center">
-					<a href="deleteStudent.php?del=<?php echo $row["userID"]; ?>"><i style="font-size:24px" class="fa">&#xf014;</i></a>
+					<a href="deleteStudent.php?del=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:darkred" class="fa">&#xf014;</i></a>
 				</td>
 			</tr>
 			<?php $count++; } ?>
 		</tbody>
 	</table>
+	
 </div>
 
 <!-- back to top button -->
