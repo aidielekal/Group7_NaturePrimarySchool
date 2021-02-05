@@ -2,7 +2,7 @@
 <?php
 
 session_start();
-
+/*
 if(isset($_SESSION['Status']))
 {
 	if($_SESSION['Status'] != 'admin') //in admin file
@@ -14,7 +14,7 @@ else
 {
 	header('Location: login.php');
 }
-
+*/
 ?>
 
 <html lang="en">
