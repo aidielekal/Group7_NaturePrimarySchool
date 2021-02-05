@@ -3,10 +3,6 @@
 
 require_once "connection.php";
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 session_start();
 
 if(isset($_SESSION['Status']))
