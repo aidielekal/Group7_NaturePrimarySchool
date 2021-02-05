@@ -13,6 +13,6 @@ if (isset($_POST['update'])) {
 }
 else{
 	alert('cannot');
-	header ('location: ediTeachers.php');
+	header ('location: editTeachers.php');
 }	
 ?>
