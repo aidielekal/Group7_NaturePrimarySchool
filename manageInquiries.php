@@ -83,7 +83,8 @@ else
 	<?php endif ?>
 
 	<?php
-		$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
+		include('connection.php');
+		//$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
 		$result = $mysqli->query("SELECT * FROM contactus") or die($mysqli->error);
 		//pre_r($result);
 	?>
