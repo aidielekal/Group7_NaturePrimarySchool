@@ -29,7 +29,7 @@ else
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link rel="stylesheet" href="home.css">
 <link rel="stylesheet" href="HeaderFooter.css">
-<link rel="stylesheet" href="manageStudents.css">
+<link rel="stylesheet" href="editStudent.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/responsive.css" media="screen and (max-width:1024px)">
 
@@ -46,55 +46,56 @@ else
 
 <div class="wrapper">
 	<div class="menu">
-	<ul class="nav">
-	 <li><a class="home" href="homepageAdmin.php">HOME</a></li>
-	 <li><a class="home" href="#">STUDENTS AND TEACHERS</a>
-		 <ul class="drop">
-				 <li><a href="manageStudents.php">Manage Students</a></li>
-				 <li><a href="manageTeachers.php">Manage Teachers</a></li>
+		<ul class="nav">
+		 <li><a class="home" href="homepageAdmin.php">HOME</a></li>
+		 <li><a class="home" href="#">STUDENTS AND TEACHERS</a>
+			 <ul class="drop">
+					 <li><a href="manageStudents.php">Manage Students</a></li>
+					 <li><a href="manageTeachers.php">Manage Teachers</a></li>
+				</ul>
+		 <li><a class="home" href="#">INQUIRIES</a>
+			<ul class="drop">
+					 <li><a href="manageInquiries.php">Manage Inquiries </a></li>
 			</ul>
-	 <li><a class="home" href="#">INQUIRIES</a>
-		 <ul class="drop">
-				 <li><a href="manageInquiries.php">Manage Inquiries </a></li>
-			</ul>
-	 <li><a class="home" href="logout.php" onclick="return confirm('Are you sure to LOG OUT?')">LOGOUT</a></li>
- </ul>
+		 <li><a class="home" href="logout.php" onclick="return confirm('Are you sure to LOG OUT?')">LOGOUT</a></li>
+		</ul>
 	</div>
  </div>
 
 <!-- =====MAIN CONTENT===== -->
-<h1>Student Details</h1>
+<h1>Update Student</h1>
 
-<div class="sTable">
-	<table width="70%" border="1" style="border-collapse:collapse;">
-		<thead>
-		<tr><th><strong>Student ID</strong></th>
-		<th><strong>Student Name</strong></th>
-		<th><strong>Email Address</strong></th>
-		<th><strong>Edit</strong></th>
-		<th><strong>Delete</strong></th>
-		</tr>
-		</thead>
-		<tbody>
-			<?php
-			$count=1;
-			$sel_query="Select * from user where userType = 'student';";
-			$result = mysqli_query($con,$sel_query);
-			while($row = mysqli_fetch_assoc($result)) { ?>
-			<tr>
-				<td align="center"><?php echo $row["userID"]; ?></td>
-				<td align="center" style="text-transform:uppercase;"><?php echo $row["Name"]; ?></td>
-				<td align="center"><?php echo $row["Username"]; ?></td>
-				<td align="center">
-					<a href="editStudent.php?edit=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:black" class="fa">&#xf040;</i></a>
-				</td>
-				<td align="center">
-					<a href="deleteStudent.php?del=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:darkred" class="fa">&#xf014;</i></a>
-				</td>
-			</tr>
-			<?php $count++; } ?>
-		</tbody>
-	</table>
+<div class="sForm">
+	<?php 
+	include('connection.php');
+	$id = $_GET['edit'];
+	$update = true;
+	$sel_query="SELECT * FROM user where userID = $id";
+	$result = mysqli_query($con,$sel_query);
+	//if (count($result) == 1 ) {
+			$n = mysqli_fetch_array($result);
+			$name = $n['Name'];
+			$username = $n['Username'];
+	?>
+	<form method="POST" action="updateStudent.php" >
+		<input type="hidden" name="id" value="<?php echo $id; ?>">
+			<div class="input-group">
+				<label>Name</label>
+				<input type="text" name="name" value="<?php echo $name; ?>">
+			</div>
+			<div class="input-group">
+				<label>Email Address</label>
+				<input type="text" name="username" value="<?php echo $username; ?>">
+			</div>
+			<div class="input-group">
+				<?php if ($update == true): ?>
+					<button class="btn" type="submit" name="update" style="background: #556B2F;" >UPDATE</button>
+				<?php else: ?>
+					<button class="btn" type="submit" name="save" >Save</button>
+				<?php endif ?>
+			</div>
+		</form>
+	
 	
 </div>
 
