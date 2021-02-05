@@ -3,13 +3,17 @@
 
 require_once "connection.php";
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 session_start();
+
 if(isset($_SESSION['Status']))
 {
-	if($_SESSION['Status'] == 'admin') //in admin file
+	if($_SESSION['Status'] != 'admin') 
 	{
-		header('Location: homepageAdmin.php'); //user
+		header('Location: manageTeachers.php'); //user
 	}
 }
 else
@@ -101,36 +105,52 @@ else
 	<div id="title">
 		<h1>Manage Teachers</h1>
 	</div>
-	<table width="90%" border="1" style="border-collapse:collapse;">
+	<table width="80%" border="1" style="border-collapse:collapse;">
 		<thead>
 		<tr>
 		<th style ="width:10%"><strong>User ID</strong></th>
 		<th style ="width:40%"><strong>Teacher Name</strong></th>
 		<th style ="width:40%"><strong>Email</strong></th>
+		<th><strong>Edit</strong></th>
+		<th><strong>Delete</strong></th>
 		</tr>
 		</thead>
 		<tbody>
 			<?php
+			$count=1;
 			require_once 'connection.php';
 		
 			$sel_query="SELECT * FROM user WHERE userType = 'teacher';";
 			$result = mysqli_query($con,$sel_query);
 			
 			while($row = mysqli_fetch_array($result)) { ?>
-			<tr><?php echo "<form action=editTeachers.php method=post>";?>
-				<td align="center"><?php echo "<input type= text1 name=usID value='".$row['userID']."'>";?></td>
-				<td align="center"><?php echo "<input type= text name=usName value=".$row['Name'].">";?></td>
-				<td align="center"><?php echo "<input type= text name=usUsrName value=".$row['Username'].">";?></td>
-				<td align="center"><?php echo "<input type= submit name=update value=update" .">";?></td>
-				<td align="center"><?php echo "<a href=deleteTeachers.php?usID=".$row['userID'].">Delete</a>";?></td>
-				<?php echo "</form>";?>
+			<tr>
+				<td align="center"><?php echo $row["userID"]; ?></td>
+				<td align="center" style="text-transform:uppercase;"><?php echo $row["Name"]; ?></td>
+				<td align="center"><?php echo $row["Username"]; ?></td>
+				<td align="center">
+					<a href="editTeachers.php?edit=<?php echo $row["userID"]; ?>"><img src="images/update.png" alt="Update"></a>
+				<td align="center">
+					<a href="deleteTeachers.php?del=<?php echo $row["userID"]; ?>"><img src="images/delete.jpg" alt="Delete"></a>
+				</td>
 			</tr>
-			<?php }?>
+			<?php $count++; } ?>
 		</tbody>
 	</table>
 
 </div>
+<!-- back to top button -->
 
+<a class="topButton" href="#top"><img class="topButton" src="images/top.png"  alt="Back to Top"></a>
+<br><br><br>
+
+<!-- ============= FOOTER ================== -->
+  <footer>
+    <p class="footer">Nature Primary School Kuala Lumpur, 16, Jalan Kiara 3, Off Jalan Bukit Kiara,
+    <br>50480 Kuala Lumpur, Malaysia.
+    <br>Email: <a href="mailto:natureprimaryschool@gmail.com">natureprimaryschool@gmail.com</a>
+    </p>
+  </footer>
 
 </body>
 </html>
