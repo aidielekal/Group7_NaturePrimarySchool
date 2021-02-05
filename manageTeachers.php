@@ -3,7 +3,7 @@
 
 require_once "connection.php";
 
-
+/*
 session_start();
 if(isset($_SESSION['Status']))
 {
@@ -16,6 +16,7 @@ else
 {
 	header('Location: login.php');
 }
+*/
 
 ?>
 
