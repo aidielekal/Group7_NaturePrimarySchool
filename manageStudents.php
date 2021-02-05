@@ -79,7 +79,7 @@ else
 		<tbody>
 			<?php
 			$count=1;
-			$sel_query="Select * from user where userType = 'teacher';";
+			$sel_query="Select * from user where userType = 'student';";
 			$result = mysqli_query($con,$sel_query);
 			while($row = mysqli_fetch_assoc($result)) { ?>
 			<tr><td align="center"><?php echo $count; ?></td>
