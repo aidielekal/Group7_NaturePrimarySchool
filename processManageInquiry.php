@@ -1,7 +1,7 @@
 <?php
 
-	$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
-
+	//$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
+	include('connection.php');
 	$title='';
 	$description='';
 	$date='';
@@ -13,7 +13,7 @@
 	if(isset($_GET['delete']))
 	{
 		$sendName=$_GET['delete'];
-		$mysqli->query("DELETE FROM contactus WHERE Name='$sendName'") or die ("DB Error: ". $mysqli->error);
+		$con->query("DELETE FROM contactus WHERE Name='$sendName'") or die ("DB Error: ". $con->error);
 		$_SESSION['message'] = "Inquiry has been deleted!";
 		$_SESSION['msg_type'] = "danger";
 

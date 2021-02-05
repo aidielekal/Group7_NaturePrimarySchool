@@ -83,9 +83,9 @@ else
 	<?php endif ?>
 
 	<?php
-		include('connection.php');
+		//include('connection.php');
 		//$mysqli = new mysqli('localhost','root','','Group6') or die(mysqli_error($mysqli));
-		$result = $mysqli->query("SELECT * FROM contactus") or die($mysqli->error);
+		$result = $con->query("SELECT * FROM contactus") or die($con->error);
 		//pre_r($result);
 	?>
 	<div class="row justify-content-center">
