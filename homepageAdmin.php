@@ -1,4 +1,4 @@
-<!-- =====Admin==== -->
+<!-- =====ADMIN==== -->
 <?php
 
 session_start();
