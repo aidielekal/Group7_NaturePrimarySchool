@@ -9,16 +9,15 @@ if(isset($_SESSION['Status']))
 {
 	if($_SESSION['Status'] != 'admin') 
 	{
-		header('Location: manageTeachers.php'); //user
+		header('Location: manageStudents.php'); //user
 	}
 }
 else
 {
 	header('Location: login.php');
 }
-*/
-
 ?>
+
 
 <html lang="en">
 <head>
@@ -30,51 +29,18 @@ else
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link rel="stylesheet" href="home.css">
 <link rel="stylesheet" href="HeaderFooter.css">
-<link rel="stylesheet" href="manageTeachers.css">
+<link rel="stylesheet" href="manageStudents.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/responsive.css" media="screen and (max-width:1024px)">
-<!--<script src="text.js"></script>-->
+
 
 <!-- =====position fixed===== -->
 <body>
-<?php require_once 'connection.php';?>
  <header>
    <div class="banner">
      <img class="banner" src="images/Banner2b.png" alt="Nature School Banner">
    </div>
  </header>
- <style>
-		input[type=text]{
-			width:100%;
-			height:5%;
-			border:1px;
-			border-radius:5px;
-			padding: 8px 15px 8px 15px;
-			margin: 10px 0px 15px 0px;
-			box-shadow: 1px 1px 2px 1px black;
-			}
-			
-		input[type=text1]{
-			width:100%;
-			text-align:center;
-			height:5%;
-			border:none;
-			border-radius:5px;
-			padding: 8px 0px 8px 0px;
-			margin: 10px 0px 15px 0px;
-			background: url("images/background.jpeg"),no-repeat;
-			}
-			
-			input[type=submit]{
-			text-align:center;
-			height:5%;
-			border:1px;
-			border-radius:5px;
-			padding: 8px 15px 8px 15px;
-			margin: 10px 0px 10px 0px;
-			box-shadow: 1px 1px 2px 1px green;
-			}
-
-   </style>
 
 <!-- =====navigation===== -->
 
@@ -90,24 +56,21 @@ else
 	 <li><a class="home" href="#">INQUIRIES</a>
 		 <ul class="drop">
 				 <li><a href="manageInquiries.php">Manage Inquiries </a></li>
-
 			</ul>
 	 <li><a class="home" href="logout.php" onclick="return confirm('Are you sure to LOG OUT?')">LOGOUT</a></li>
  </ul>
 	</div>
  </div>
- 
- <!-- ======CONTENT========== -->
-	<div class="tTable">
-	<div id="title">
-		<h1>Manage Teachers</h1>
-	</div>
-	<table width="80%" border="1" style="border-collapse:collapse;">
+
+<!-- =====MAIN CONTENT===== -->
+<h1>Student Details</h1>
+
+<div class="sTable">
+	<table width="70%" border="1" style="border-collapse:collapse;">
 		<thead>
-		<tr>
-		<th style ="width:10%"><strong>User ID</strong></th>
-		<th style ="width:40%"><strong>Teacher Name</strong></th>
-		<th style ="width:40%"><strong>Email</strong></th>
+		<tr><th><strong>Student ID</strong></th>
+		<th><strong>Student Name</strong></th>
+		<th><strong>Email Address</strong></th>
 		<th><strong>Edit</strong></th>
 		<th><strong>Delete</strong></th>
 		</tr>
@@ -115,27 +78,26 @@ else
 		<tbody>
 			<?php
 			$count=1;
-			require_once 'connection.php';
-		
-			$sel_query="SELECT * FROM user WHERE userType = 'teacher';";
+			$sel_query="Select * from user where userType = 'student';";
 			$result = mysqli_query($con,$sel_query);
-			
-			while($row = mysqli_fetch_array($result)) { ?>
+			while($row = mysqli_fetch_assoc($result)) { ?>
 			<tr>
 				<td align="center"><?php echo $row["userID"]; ?></td>
 				<td align="center" style="text-transform:uppercase;"><?php echo $row["Name"]; ?></td>
 				<td align="center"><?php echo $row["Username"]; ?></td>
 				<td align="center">
-					<a href="editTeachers.php?edit=<?php echo $row["userID"]; ?>"><img src="images/update.png" alt="Update"></a>
+					<a href="editStudent.php?edit=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:black" class="fa">&#xf040;</i></a>
+				</td>
 				<td align="center">
-					<a href="deleteTeachers.php?del=<?php echo $row["userID"]; ?>"><img src="images/delete.jpg" alt="Delete"></a>
+					<a href="deleteStudent.php?del=<?php echo $row["userID"]; ?>"><i style="font-size:24px; color:darkred" class="fa">&#xf014;</i></a>
 				</td>
 			</tr>
 			<?php $count++; } ?>
 		</tbody>
 	</table>
-
+	
 </div>
+
 <!-- back to top button -->
 
 <a class="topButton" href="#top"><img class="topButton" src="images/top.png"  alt="Back to Top"></a>
