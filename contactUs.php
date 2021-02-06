@@ -17,7 +17,7 @@ else
 ?>
 
 <?php
-	include 'configure_contactUs.php';
+	include 'connection.php';
 
 	if (isset($_POST['button'])){
 		$name = $_POST['name'];
