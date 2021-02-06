@@ -23,7 +23,7 @@ $events=displayEvent();
   <div class="wrapper">
     <div class="menu">
     <ul class="nav">
-     <li><a class="home" href="homepageGuest.php">HOME</a></li>
+     <li><a class="home" href="index.php">HOME</a></li>
      <li><a class="home" href="aboutUsGuest.php">ABOUT US</a>
      <li><a class="home" href="#">NEWS AND EVENTS</a>
        <ul class="drop">
