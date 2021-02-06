@@ -99,7 +99,7 @@ else
  <!-- ======CONTENT========== -->
 	<div class="tTable">
 	<div id="title">
-		<h1>Manage Teachers</h1>
+		<h1>Teacher Details</h1>
 	</div>
 	<table width="80%" border="1" style="border-collapse:collapse;">
 		<thead>
