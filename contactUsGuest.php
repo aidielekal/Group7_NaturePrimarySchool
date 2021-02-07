@@ -15,7 +15,7 @@
 			$sql="INSERT INTO contactUs(Name, Email, Message) VALUES ('$_POST[name]','$_POST[email]','$_POST[message]')";
 			mysqli_query($con,$sql);
 			echo '<script type="text/javascript">';
-			echo ' alert("Thank You. We will get back to you ASAP")';
+			echo ' alert("Thank You for your patience. We will get back to you ASAP through email")';
 			echo '</script>';
 		}
 
