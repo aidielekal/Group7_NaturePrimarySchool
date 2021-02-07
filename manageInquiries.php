@@ -105,7 +105,7 @@ else
 					<td><?php echo$row['Message']; ?></td>
 					<td>
 						<a href="manageInquiries.php?delete=<?php echo$row['Name']; ?>" class="btn-danger">Delete</a>
-						<p>Email: <a href="mailto:<?php  $row['Email']; ?>"><?php echo$row['Email']; ?></a></p>
+						<p>Email: <a href="mailto:<?php  echo$row['Email']; ?>"><?php echo$row['Email']; ?></a></p>
 		
 					</td>
 				</tr>
