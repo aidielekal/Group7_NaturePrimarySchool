@@ -39,7 +39,7 @@ include "code.php";
 
 <input class="btn" type="submit" name="button" value="Login" >
 <p class ="message">Not Registered? <a href="registerpage.php"> Register here</a></p>
-<p class ="message">Login as <a href="index.php"> Guest</a></p>
+<p class ="message">View as <a href="index.php"> Guest</a></p>
 
 </div>
 </form>
